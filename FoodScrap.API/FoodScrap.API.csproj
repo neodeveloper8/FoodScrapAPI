@@ -16,8 +16,4 @@
     <ProjectReference Include="..\FoodScrap.Infrastructure\FoodScrap.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
