@@ -7,6 +7,8 @@ using FoodScrap.Infrastructure.Context;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using FoodScrap.Domain.Interfaces;
+using FoodScrap.Infrastructure.Repositories;
 
 namespace FoodScrap.Infrastructure.Configuration
 {
@@ -21,6 +23,9 @@ namespace FoodScrap.Infrastructure.Configuration
                 var connectionString = configuration.GetConnectionString("CadenaSQL");
                 options.UseSqlServer(connectionString);
             });
+
+            // UnitOfWork
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             return services;
         }
     }
