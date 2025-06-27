@@ -1,0 +1,26 @@
+# Archivos temporales de VS
+.vs/
+*.user
+*.suo
+
+# Archivos de build
+bin/
+obj/
+out/
+build/
+
+# Archivos publicados
+/publish/
+/published/
+/dist/
+
+# Archivos de logs
+*.log
+
+# Archivos temporales del sistema
+*.DS_Store
+Thumbs.db
+
+# Archivos de configuración personal
+*.swp
+*.tmp
