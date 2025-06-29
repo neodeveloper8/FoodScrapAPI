@@ -23,6 +23,11 @@ namespace FoodScrap.Infrastructure.Repositories
 
         public async Task AddAsync(T entity) => await _dbSet.AddAsync(entity);
         public void Delete(T entity) => _dbSet.Remove(entity);
+
+        public void Remove(T entity)
+        {
+            _context.Set<T>().Remove(entity);
+        }
         public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate) =>
             await _dbSet.Where(predicate).ToListAsync();
         public async Task<IEnumerable<T>> GetAllAsync() => await _dbSet.ToListAsync();

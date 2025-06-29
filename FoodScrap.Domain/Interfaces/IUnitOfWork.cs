@@ -10,7 +10,7 @@ namespace FoodScrap.Domain.Interfaces
     public interface IUnitOfWork
     {
         IGenericRepository<User> Users { get; }
-        IGenericRepository<Restaurant> Restaurants { get; }
+        IRestaurantRepository Restaurants { get; }
         IGenericRepository<RestaurantCategory> RestaurantCategories { get; }
         IGenericRepository<Dish> Dishes { get; }
         IGenericRepository<Review> Reviews { get; }

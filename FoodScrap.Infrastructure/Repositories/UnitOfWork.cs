@@ -14,20 +14,24 @@ namespace FoodScrap.Infrastructure.Repositories
         private readonly ApplicationDbContext _context;
 
         public IGenericRepository<User> Users { get; }
-        public IGenericRepository<Restaurant> Restaurants { get; }
+        public IRestaurantRepository Restaurants { get; }
+
         public IGenericRepository<RestaurantCategory> RestaurantCategories { get; }
         public IGenericRepository<Dish> Dishes { get; }
         public IGenericRepository<Review> Reviews { get; }
+
 
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
             Users = new GenericRepository<User>(_context);
-            Restaurants = new GenericRepository<Restaurant>(_context);
+            Restaurants = new RestaurantRepository(_context);
             RestaurantCategories = new GenericRepository<RestaurantCategory>(_context);
             Dishes = new GenericRepository<Dish>(_context);
             Reviews = new GenericRepository<Review>(_context);
         }
+
+
 
         public async Task<int> CompleteAsync() => await _context.SaveChangesAsync();
     }
