@@ -66,6 +66,13 @@ namespace FoodScrap.API.Controllers
             return Ok(result);
         }
 
+        [HttpGet("compare")]
+        public async Task<IActionResult> Compare([FromQuery] string name)
+        {
+            var result = await _mediator.Send(new CompareDishesByNameQuery(name));
+            return Ok(result);
+        }
+
 
     }
 }
