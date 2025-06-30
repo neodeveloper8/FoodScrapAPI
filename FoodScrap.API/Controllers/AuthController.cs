@@ -1,6 +1,8 @@
 ﻿using FoodScrap.Application.DTOs;
 using FoodScrap.Application.UseCases.Auth.Commands;
+using FoodScrap.Application.UseCases.Auth.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodScrap.API.Controllers
@@ -31,6 +33,14 @@ namespace FoodScrap.API.Controllers
             var token = await _mediator.Send(new LoginUserCommand(login));
             if (token is null) return Unauthorized("Credenciales inválidas");
             return Ok(new { token });
+        }
+
+        [HttpGet("me")]
+        [Authorize]
+        public async Task<IActionResult> Me()
+        {
+            var result = await _mediator.Send(new GetCurrentUserQuery());
+            return Ok(result);
         }
 
     }
