@@ -11,7 +11,9 @@ namespace FoodScrap.Domain.Interfaces
     {
         Task<T?> GetByIdAsync(Guid id);
         Task<IEnumerable<T>> GetAllAsync();
-        Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
+        Task<List<T>> FindAsync(
+             Expression<Func<T, bool>>? predicate = null,
+            Func<IQueryable<T>, IQueryable<T>>? include = null);
         Task AddAsync(T entity);
         void Update(T entity);
         void Delete(T entity);

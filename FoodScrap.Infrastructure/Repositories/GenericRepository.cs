@@ -28,8 +28,22 @@ namespace FoodScrap.Infrastructure.Repositories
         {
             _context.Set<T>().Remove(entity);
         }
-        public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate) =>
-            await _dbSet.Where(predicate).ToListAsync();
+
+        public async Task<List<T>> FindAsync(
+            Expression<Func<T, bool>>? predicate = null,
+            Func<IQueryable<T>, IQueryable<T>>? include = null)
+        {
+            IQueryable<T> query = _dbSet;
+
+            if (include != null)
+                query = include(query);
+
+            if (predicate != null)
+                query = query.Where(predicate);
+
+            return await query.ToListAsync();
+        }
+
         public async Task<IEnumerable<T>> GetAllAsync() => await _dbSet.ToListAsync();
         public async Task<T?> GetByIdAsync(Guid id) => await _dbSet.FindAsync(id);
         public void Update(T entity) => _dbSet.Update(entity);
