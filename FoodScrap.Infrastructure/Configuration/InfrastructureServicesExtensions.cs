@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using FoodScrap.Domain.Interfaces;
 using FoodScrap.Infrastructure.Repositories;
+using FoodScrap.Infrastructure.Reports;
 
 namespace FoodScrap.Infrastructure.Configuration
 {
@@ -26,6 +27,7 @@ namespace FoodScrap.Infrastructure.Configuration
 
             // UnitOfWork
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<ExcelReportService>();
             return services;
         }
     }

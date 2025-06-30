@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FoodScrap.Domain\FoodScrap.Domain.csproj" />
+    <ProjectReference Include="..\FoodScrap.Infrastructure\FoodScrap.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
