@@ -61,6 +61,14 @@ namespace FoodScrap.API.Controllers
             return NoContent();
         }
 
+        [HttpGet("by-category/{categoryId}")]
+        public async Task<IActionResult> GetByCategory(Guid categoryId)
+        {
+            var result = await _mediator.Send(new GetRestaurantsByCategoryQuery(categoryId));
+            return Ok(result);
+        }
+
+
 
 
 

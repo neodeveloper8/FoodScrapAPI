@@ -20,4 +20,8 @@
     <ProjectReference Include="..\FoodScrap.Domain\FoodScrap.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCases\NewFolder1\" />
+  </ItemGroup>
+
 </Project>

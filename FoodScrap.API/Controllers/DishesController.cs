@@ -50,6 +50,22 @@ namespace FoodScrap.API.Controllers
             return NoContent();
         }
 
+        [HttpDelete("{id}")]
+        [Authorize]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var success = await _mediator.Send(new DeleteDishCommand(id));
+            if (!success) return NotFound();
+            return NoContent();
+        }
+
+        [HttpPost("filter")]
+        public async Task<IActionResult> Filter([FromBody] DishFilterDto filter)
+        {
+            var result = await _mediator.Send(new GetFilteredDishesQuery(filter));
+            return Ok(result);
+        }
+
 
     }
 }
