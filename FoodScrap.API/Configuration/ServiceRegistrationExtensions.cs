@@ -14,7 +14,7 @@ namespace FoodScrap.API.Configuration
             services.AddHttpContextAccessor();
             // Registro de servicios de Infrastructura
             services.AddInfrastructureServices(configuration);
-
+            services.AddHttpContextAccessor();
             // JWT Auth
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
